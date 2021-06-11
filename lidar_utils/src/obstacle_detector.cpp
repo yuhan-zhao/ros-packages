@@ -188,8 +188,10 @@ void ObstacleDetector::generate_obstacle_msg(const sensor_msgs::LaserScan::Const
                 dsum += dsub[i].at(j);
                 asum += asub[i].at(j);
             }
+            float ave {float(asum) / asub[i].size()};
+            
             obs->dist_ave.push_back( dsum / dsub[i].size() );
-            obs->angle_ave.push_back( asum / asub[i].size()) ; //% 360 ); 
+            obs->angle_ave.push_back( ave - int(ave/360)*360 ) ; 
             obs->angle_span.push_back( int(asub[i].size()) );
             obs->header = laser->header;
         }
