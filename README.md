@@ -1,5 +1,5 @@
 # ros-packages
-This repo collects small custom ros packages for future snippet. Each package will be documented as follows.
+This repo collects small custom ros package snippets for future development. Each package will be documented as follows.
 
 ## lidar_utils
 This package is for turtlebot lidar. The package mainly impelements the following functions:
