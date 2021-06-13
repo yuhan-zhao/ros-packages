@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(lidar_detector)
+project(lidar_utils)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -105,9 +105,9 @@ generate_messages(
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
    INCLUDE_DIRS include
-#  LIBRARIES lidar_detector
+#  LIBRARIES lidar_utils
    CATKIN_DEPENDS roscpp sensor_msgs std_msgs message_runtime
-  DEPENDS system_lib
+#  DEPENDS system_lib
 )
 
 ###########
@@ -123,9 +123,9 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/lidar_detector.cpp
+#   src/${PROJECT_NAME}/lidar_utils.cpp
 # )
-
+#add_dependencies(${PROJECT_NAME} lidar_utils_gencpp)
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -150,17 +150,14 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-add_executable(talker_test src/talker_test.cpp)
-target_link_libraries(talker_test ${catkin_LIBRARIES})
 
-add_executable(main_v1 src/main_v1.cpp src/obstacle_detector.cpp)
-target_link_libraries(main_v1 ${catkin_LIBRARIES})
-#add_dependencies(main_v1 ${catkin_EXPORTED_TARGETS})
-#add_dependencies(main_v1 ${${PROJECT_NAME}_EXPORTED_TARGETS})
+add_executable(obs_detector_v1 src/main_v1.cpp src/obstacle_detector.cpp)
+target_link_libraries(obs_detector_v1 ${catkin_LIBRARIES})
+#add_dependencies(obs_detector_v1 ${catkin_EXPORTED_TARGETS})
 
-#add_executable(main_v2 src/main_v2.cpp src/obstacle_detector.cpp)
-#target_link_libraries(main_v2 ${catkin_LIBRARIES})
-#add_dependencies(main_v2 ${catkin_EXPORTED_TARGETS})
+add_executable(obs_detector_v2 src/main_v2.cpp src/obstacle_detector.cpp)
+target_link_libraries(obs_detector_v2 ${catkin_LIBRARIES})
+#add_dependencies(obs_detector_v2 ${catkin_EXPORTED_TARGETS})
 
 
 #############

@@ -1,13 +1,11 @@
 #ifndef OBSTACLE_DETECTOR_H
 #define OBSTACLE_DETECTOR_H
 
-#include "ros/ros.h"
 #include "sensor_msgs/LaserScan.h"
-#include "obstacle_detector/Obstacle.h"
+#include "lidar_utils/Obstacle.h"
 
 #include <cmath>
 #include <vector>
-#include <numeric>
 
 
 class ObstacleDetector{
@@ -24,15 +22,16 @@ public:
     {
     }
     void read_parameter();
+    
     bool is_in_filter(const float);
     bool check_pre(const std::vector< float > &, int);
     bool check_post(const float *, int);
-    int find_starting_point(const std::vector< float > &);
+
     void rearrange_array(const std::vector< float > &, const std::vector< int > &, float *, int *);
     void split_obstacle(const std::vector< float > &, const std::vector< int > &, 
                 std::vector< std::vector<float> > &, std::vector< std::vector<int> > &);
     void generate_obstacle_msg(const sensor_msgs::LaserScan::ConstPtr &, 
-            lidar_detector::Obstacle::Ptr &);
+            lidar_utils::Obstacle::Ptr &);
 };
 
 #endif

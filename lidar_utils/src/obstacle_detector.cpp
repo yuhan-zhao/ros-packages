@@ -3,7 +3,8 @@ This files implements lidar obstacle detection algorithm.
 After receiving lidar messages, it publishes the self-defined message.
 */
 
-#include "lidar_detector/lidar_detector.h"
+#include "ros/ros.h"
+#include "lidar_utils/obstacle_detector.h"
 
 
 void ObstacleDetector::read_parameter(){
@@ -56,23 +57,6 @@ bool ObstacleDetector::check_post(const float *d, int idx){
         return false;
     }
 
-}
-
-
-int ObstacleDetector::find_starting_point(const std::vector< float > &d){
-    // This function finds the starting point of distance array
-    int start = 0;
-    for (int i = 0; i < m_length; ++i){
-        // only check non-nan element 
-        if ( is_in_filter(d[i]) ){
-            if ( check_pre(d, i-1) ){
-                start = i;
-                break;
-            }
-        }
-    }
-
-    return start;
 }
 
 
@@ -164,7 +148,7 @@ void ObstacleDetector::split_obstacle(const std::vector< float > &d, const std::
 
 
 void ObstacleDetector::generate_obstacle_msg(const sensor_msgs::LaserScan::ConstPtr &laser, 
-        ObstacleDetector::Obstacle::Ptr &obs){
+        lidar_utils::Obstacle::Ptr &obs){
     // This function refines the distance information for each obstacle 
     // by deleting small distance subarray (induced by noise)
 

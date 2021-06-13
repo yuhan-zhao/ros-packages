@@ -1,9 +1,12 @@
-#include "obstacle_detector/obstacle_detector.h"
-//#include <iostream>
+/*
+This funtion use traditional callback function to receive lidar data
+*/
+#include "ros/ros.h"
+#include "lidar_utils/obstacle_detector.h"
 
 
 void lidarCallback(const sensor_msgs::LaserScan::ConstPtr &laserPtr){
-    ros::Rate loop_rate(2);
+    ros::Rate loop_rate(1);
 
     double dmin {0.3};
     double dmax {2};
@@ -11,10 +14,10 @@ void lidarCallback(const sensor_msgs::LaserScan::ConstPtr &laserPtr){
     int split_wid {5};
     int len {360};
     int counter {0};
-    Lidar mylidar {dmin, dmax, valid_wid, split_wid, len};
+    ObstacleDetector mylidar {dmin, dmax, valid_wid, split_wid, len};
     //mylidar.read_parameter();
 
-    lidar_detector::Obstacle::Ptr obsPtr(new lidar_detector::Obstacle);
+    lidar_utils::Obstacle::Ptr obsPtr(new lidar_utils::Obstacle);
     mylidar.generate_obstacle_msg(laserPtr, obsPtr);
 
     ROS_INFO("obstacle info broadcasted.", counter);
@@ -40,7 +43,7 @@ int main(int argc, char **argv){
     /* use 1 as the queue length. If the recieved message is greater than queue length,
        then we throw the old message when new one arrives.
        This happens when processing callback is slow. If call back is fast, 
-     no new message is needed to store in the queue.
+       no new message is needed to store in the queue.
     */
     sub = n.subscribe("/chatter", 1, lidarCallback);
     ros::spin();

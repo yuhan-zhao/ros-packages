@@ -1,6 +1,9 @@
-#include "obstacle_detector/obstacle_detector.h"
-//#include "ros/ros.h"
-//#include "sensor_msgs/LaserScan.h"
+/*
+This funtion use ros waitForMessage to receive lidar data
+*/
+
+#include "ros/ros.h"
+#include "lidar_utils/obstacle_detector.h"
 
 
 int main(int argc, char **argv){
@@ -22,7 +25,7 @@ int main(int argc, char **argv){
         // get the lasted Laser data
         sensor_msgs::LaserScan::ConstPtr laserPtr; 
         laserPtr = ros::topic::waitForMessage<sensor_msgs::LaserScan>("/chatter", n);
-        obstacle_detector::Obstacle::Ptr obsPtr(new lidar_detector::Obstacle);
+        lidar_utils::Obstacle::Ptr obsPtr(new lidar_utils::Obstacle);
         
         mylidar.generate_obstacle_msg(laserPtr, obsPtr);
 
