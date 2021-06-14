@@ -4,7 +4,6 @@
 #include "sensor_msgs/LaserScan.h"
 #include "lidar_utils/Obstacle.h"
 
-#include <cmath>
 #include <vector>
 
 

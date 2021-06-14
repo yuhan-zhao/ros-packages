@@ -1,0 +1,7 @@
+---
+# This yaml file specified the filter parameter for lidar obstacle detector
+valid_width: 3  # if valid_width consecutive non-nan, it is an obstacle
+split_width: 5  # if split_width consecutive nan, different obstacles
+length: 360   # total length for lidar data array
+dmin: 0.3     # minimum valid distance range
+dmax: 2.0     # maximum valid distance range

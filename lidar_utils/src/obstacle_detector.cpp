@@ -8,8 +8,47 @@ After receiving lidar messages, it publishes the self-defined message.
 
 
 void ObstacleDetector::read_parameter(){
-    // This functions reads the detection parameter from the param yaml file
-    // for future interface...
+    // This functions reads the detection parameter via ros parameter server
+    double dmin;
+    double dmax;
+    int valid_wid;
+    int split_wid;
+    int len;
+    
+    if (ros::param::get("dmin", dmin)){
+        m_dmin = dmin;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'dmin'");
+    }
+    
+    if (ros::param::get("dmax", dmax)){
+        m_dmax = dmax;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'dmax'");
+    }
+
+    if (ros::param::get("valid_width", valid_wid)){
+        m_valid_width = valid_wid;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'valid_wid'");
+    }
+
+    if (ros::param::get("split_width", split_wid)){
+        m_split_width = split_wid;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'split_wid'");
+    }
+
+    if (ros::param::get("length", len)){
+        m_length = len;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'len'");
+    }
 }
 
 

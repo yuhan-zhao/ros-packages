@@ -19,7 +19,7 @@ int main(int argc, char **argv){
     int len {360};
     int counter {0};
     ObstacleDetector mylidar {dmin, dmax, valid_wid, split_wid, len};
-    //mylidar.read_parameter();
+    mylidar.read_parameter();
 
     while ( ros::ok() ){
         // get the lasted Laser data

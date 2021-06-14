@@ -153,11 +153,11 @@ include_directories(
 
 add_executable(obs_detector_v1 src/main_v1.cpp src/obstacle_detector.cpp)
 target_link_libraries(obs_detector_v1 ${catkin_LIBRARIES})
-#add_dependencies(obs_detector_v1 ${catkin_EXPORTED_TARGETS})
+add_dependencies(obs_detector_v1 ${catkin_EXPORTED_TARGETS})
 
 add_executable(obs_detector_v2 src/main_v2.cpp src/obstacle_detector.cpp)
 target_link_libraries(obs_detector_v2 ${catkin_LIBRARIES})
-#add_dependencies(obs_detector_v2 ${catkin_EXPORTED_TARGETS})
+add_dependencies(obs_detector_v2 ${catkin_EXPORTED_TARGETS})
 
 
 #############

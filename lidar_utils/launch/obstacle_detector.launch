@@ -1,0 +1,6 @@
+<launch>
+    <group ns="rob1">
+        <node pkg="lidar_utils" type="obs_detector_v1" name="obs_v1" output="screen" />
+        <rosparam command="load" file="$(find lidar_utils)/config/lidar_filter.yaml" />
+    </group>
+</launch>
