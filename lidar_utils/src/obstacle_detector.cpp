@@ -5,6 +5,7 @@ After receiving lidar messages, it publishes the self-defined message.
 
 #include "ros/ros.h"
 #include "lidar_utils/obstacle_detector.h"
+#include <cmath>
 
 
 void ObstacleDetector::read_parameter(){
