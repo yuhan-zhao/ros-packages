@@ -14,10 +14,11 @@ public:
     int m_length;
     double m_dmin;
     double m_dmax;
+    double m_rate;
 
 public:
-    ObstacleDetector(double dmin=0.0, double dmax=3.5, int valid_wid=3, int split_wid=5, int len=360) 
-        : m_dmin{dmin}, m_dmax{dmax}, m_valid_width{valid_wid}, m_split_width{split_wid}, m_length{len}
+    ObstacleDetector(double dmin=0.0, double dmax=3.5, int valid_wid=3, int split_wid=5, int len=360, double rate=1) 
+        : m_dmin{dmin}, m_dmax{dmax}, m_valid_width{valid_wid}, m_split_width{split_wid}, m_length{len}, m_rate{rate}
     {
     }
     void read_parameter();

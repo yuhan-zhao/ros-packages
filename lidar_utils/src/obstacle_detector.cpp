@@ -14,6 +14,7 @@ void ObstacleDetector::read_parameter(){
     int valid_wid;
     int split_wid;
     int len;
+    double rate;
     
     if (ros::param::get("dmin", dmin)){
         m_dmin = dmin;
@@ -48,6 +49,13 @@ void ObstacleDetector::read_parameter(){
     }
     else{
         ROS_ERROR("Failed to get param 'len'");
+    }
+
+    if (ros::param::get("rate", rate)){
+        m_rate = rate;
+    }
+    else{
+        ROS_ERROR("Failed to get param 'rate'");
     }
 }
 

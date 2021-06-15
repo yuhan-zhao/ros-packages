@@ -5,3 +5,4 @@ split_width: 5  # if split_width consecutive nan, different obstacles
 length: 360   # total length for lidar data array
 dmin: 0.3     # minimum valid distance range
 dmax: 2.0     # maximum valid distance range
+rate: 1.0     # rate in Hz to detect and publish obstacle inforamtion

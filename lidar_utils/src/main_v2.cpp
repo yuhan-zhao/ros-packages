@@ -26,7 +26,7 @@ void lidarCallback(const sensor_msgs::LaserScan::ConstPtr &laserPtr){
 
 
 int main(int argc, char **argv){
-    ros::init(argc, argv, "obstacle_detctor");
+    ros::init(argc, argv, "obstacle_detctor_v2");
     ros::NodeHandle n;
     ros::Subscriber sub;
     ros::Rate loop_rate(1);     // control loop frequency, Hz
@@ -45,7 +45,7 @@ int main(int argc, char **argv){
        This happens when processing callback is slow. If call back is fast, 
        no new message is needed to store in the queue.
     */
-    sub = n.subscribe("/chatter", 1, lidarCallback);
+    sub = n.subscribe("/scan", 1, lidarCallback);
     ros::spin();
   
     return 0;

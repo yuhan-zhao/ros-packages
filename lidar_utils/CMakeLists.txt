@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(lidar_utils)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+# add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -150,6 +150,9 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(talker_scan src/talker_scan.cpp)
+target_link_libraries(talker_scan ${catkin_LIBRARIES})
 
 add_executable(obs_detector_v1 src/main_v1.cpp src/obstacle_detector.cpp)
 target_link_libraries(obs_detector_v1 ${catkin_LIBRARIES})
